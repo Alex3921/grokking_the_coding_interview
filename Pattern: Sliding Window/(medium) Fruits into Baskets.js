@@ -34,7 +34,3 @@ function fruits_into_baskets(fruits) {
   
     return maxLength;
   }
-  
-  
-  console.log(`Maximum number of fruits: ${fruits_into_baskets(['A', 'B', 'C', 'A', 'C'])}`);
-  console.log(`Maximum number of fruits: ${fruits_into_baskets(['A', 'B', 'C', 'B', 'B', 'C'])}`);
