@@ -62,7 +62,6 @@ const find_permutation = function (str, pattern) {
   return false;
 };
 
-
 console.log(`Permutation exist: ${find_permutation('oidbcaf', 'abc')}`);
 console.log(`Permutation exist: ${find_permutation('odicf', 'dc')}`);
 console.log(`Permutation exist: ${find_permutation('bcdxabcdy', 'bcdyabcdx')}`);
