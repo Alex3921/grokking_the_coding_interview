@@ -6,13 +6,13 @@
 // triplet with the smallest sum.
 
 const triplet_sum_close_to_target = function (arr, target_sum) {
-    arr.sort((a,b) => a-b)
+    arr.sort((a,b) => a-b) // O(nlogn)
     let result = arr[0] + arr[1] + arr[arr.length - 1];
 
-    for(let i = 0; i < arr.length-2; i++) {
+    for(let i = 0; i < arr.length-2; i++) { // O(n)
         let left = i+1, right = arr.length - 1;
 
-        while(left < right) {
+        while(left < right) { // O(n)
             const current_sum = arr[i] + arr[left] + arr[right];
 
             if(current_sum > target_sum) {
