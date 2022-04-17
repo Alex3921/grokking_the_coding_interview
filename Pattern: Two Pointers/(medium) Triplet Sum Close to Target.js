@@ -29,6 +29,8 @@ const triplet_sum_close_to_target = function (arr, target_sum) {
     return result;
 }
 
+// Time complexity: O(nlogn) + O(n^2) => O(n^2)
+
 console.log(triplet_sum_close_to_target([-2, 0, 1, 2], 2));
 console.log(triplet_sum_close_to_target([-3, -1, 1, 2], 1));
 console.log(triplet_sum_close_to_target([1, 0, 1, 1], 100));
