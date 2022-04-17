@@ -3,14 +3,11 @@
 // How will the time complexity change in this case?
 
 
-// [-1, 1, 2, 3, 4], 5
-
-
 const triplet_with_smaller_sum = function(arr, target) {
-    arr.sort((a, b) => a - b)
+    arr.sort((a, b) => a - b) ; // O(nlogN)
     const triplets = [];
 
-    for(let i = 0; i < arr.length - 2; i++){
+    for(let i = 0; i < arr.length - 2; i++){ // O(n)
         search_pairs(arr, target - arr[i], i, triplets);
     }
 
@@ -22,12 +19,12 @@ const triplet_with_smaller_sum = function(arr, target) {
     let left = start + 1,
         right = arr.length - 1;
 
-    while(left < right){
+    while(left < right){ // O(n)
         const current_sum = arr[left] + arr[right];
         if(current_sum < target_sum) { // found triplets
 
             // we know that all elem between left and right < target_sum
-            for(let i = right; i > left; i--){
+            for(let i = right; i > left; i--){ // O(n) - when target > every triplet
                 triplets.push([arr[start], arr[left], arr[i]]);
             }
             left++;
@@ -36,6 +33,10 @@ const triplet_with_smaller_sum = function(arr, target) {
         }
     }
   }
+
+
+// Time complexity: O(nlogN) + O(n) * O(n) + O(n) => O(nlogN) + O(n^3) => O(n^3);
+// Space complexity: O(n)
 
 
 console.log(triplet_with_smaller_sum([-1, 0, 2, 3], 3));
