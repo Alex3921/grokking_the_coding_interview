@@ -7,29 +7,27 @@
 
 const triplet_sum_close_to_target = function (arr, target_sum) {
     arr.sort((a,b) => a-b)
-    let smallest_difference = Infinity;
+    let result = arr[0] + arr[1] + arr[arr.length - 1];
 
     for(let i = 0; i < arr.length-2; i++) {
-        let left = i + 1, right = arr.length - 1;
+        let left = i+1, right = arr.length - 1;
+
         while(left < right) {
-            const target_diff = target_sum - arr[i] - arr[left] - arr[right];
-            if(target_diff === 0) {
-                return target_sum;
-            };
-            if(Math.abs(target_diff) < Math.abs(smallest_difference) || (Math.abs(target_diff) === Math.abs(smallest_difference) && target_diff > smallest_difference)) {
-                smallest_difference = target_diff;
+            const current_sum = arr[i] + arr[left] + arr[right];
+
+            if(current_sum > target_sum) {
+                right--;
+            } else {
+                left++;
             }
 
-            if(target_diff > 0) {
-                left += 1;
-            } else {
-                right -= 1;
+            if(Math.abs(target_sum - current_sum) < Math.abs(target_sum - result)) {
+                result = current_sum;
             }
         }
     }
-  return target_sum - smallest_difference;
-};
-
+    return result;
+}
 
 console.log(triplet_sum_close_to_target([-2, 0, 1, 2], 2));
 console.log(triplet_sum_close_to_target([-3, -1, 1, 2], 1));
