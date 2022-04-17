@@ -6,7 +6,7 @@
 // triplet with the smallest sum.
 
 const triplet_sum_close_to_target = function (arr, target_sum) {
-    arr.sort((a,b) => a-b) // O(nlogn)
+    arr.sort((a,b) => a-b) // Time: O(nlogn) / Space: O(n)
     let result = arr[0] + arr[1] + arr[arr.length - 1];
 
     for(let i = 0; i < arr.length-2; i++) { // O(n)
@@ -30,7 +30,7 @@ const triplet_sum_close_to_target = function (arr, target_sum) {
 }
 
 // Time complexity: O(nlogn) + O(n^2) => O(n^2)
-
+// Space complexity: O(n)
 console.log(triplet_sum_close_to_target([-2, 0, 1, 2], 2));
 console.log(triplet_sum_close_to_target([-3, -1, 1, 2], 1));
 console.log(triplet_sum_close_to_target([1, 0, 1, 1], 100));
