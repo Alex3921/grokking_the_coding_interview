@@ -57,6 +57,9 @@ const find_start = function(head, cycle_length) {
     return slow;
 }
 
+// Time complexity: O(n)
+// Space complexity: O(n)
+
 
 head = new Node(1)
 head.next = new Node(2)
