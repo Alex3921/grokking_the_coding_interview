@@ -61,6 +61,9 @@ const insert = function(intervals, new_interval) {
     return result;
 }
 
+// Time complexity: O(n)
+// Space complexity: O(n)
+
 
 process.stdout.write('Intervals after inserting the new interval: ');
 let result = insert([
