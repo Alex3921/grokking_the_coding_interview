@@ -21,14 +21,14 @@ const find_minimum_depth = function(root) {
 
     const queue = new Deque();
     queue.push(root);
-    let maximumTreeDepth = 0;
+    let minimumTreeDepth = 0;
     while(queue.length > 0) {
-        maximumTreeDepth += 1;
+        minimumTreeDepth += 1;
         const levelSize = queue.length;
         for(let i = 0; i < levelSize; i++) {
             const currentNode = queue.shift();
-            if(currentNode.left === null &&  currentNode.right === null) {
-                return maximumTreeDepth;
+            if(currentNode.left === null && currentNode.right === null) {
+                return minimumTreeDepth;
             }
             if(currentNode.left !== null) {
                 queue.push(currentNode.left);
@@ -38,7 +38,7 @@ const find_minimum_depth = function(root) {
             }
         }
     }
-    return maximumTreeDepth;
+    return minimumTreeDepth;
 }
 
 // Time complexity = O(n)
