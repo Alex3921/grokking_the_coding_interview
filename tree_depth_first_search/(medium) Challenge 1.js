@@ -12,28 +12,48 @@ class TreeNode {
   }
 }
 
-const tree_height = function (root) {
-  return tree_height_recursive(root, 0);
-};
-
-const tree_height_recursive = function (root, treeHeight) {
-  if (root === null) return;
-
-  if (root.left === null && root.right === null) {
-    return;
+class TreeDiameter {
+  constructor() {
+    this.treeDiameter = 0;
   }
-  tree_height_recursive(root.left, treeHeight);
-  treeHeight += 1;
-  tree_height_recursive(root.right, treeHeight);
 
-  return treeHeight;
-};
+  find_diameter(root) {
+    this.calculate_height(root);
+    return this.treeDiameter;
+  }
 
+  calculate_height(currentNode) {
+    if (currentNode === null) {
+      return 0;
+    }
+
+    const leftTreeHeight = this.calculate_height(currentNode.left);
+    const rightTreeHeight = this.calculate_height(currentNode.right);
+
+    if (leftTreeHeight !== null && rightTreeHeight !== null) {
+      const diameter = leftTreeHeight + rightTreeHeight + 1;
+      this.treeDiameter = Math.max(this.treeDiameter, diameter);
+    }
+
+    return Math.max(leftTreeHeight, rightTreeHeight) + 1;
+  }
+}
+
+// Time complexity: O(n)
+// Space complexity: O(n)
+
+const treeDiameter = new TreeDiameter();
 const root = new TreeNode(1);
 root.left = new TreeNode(2);
 root.right = new TreeNode(3);
 root.left.left = new TreeNode(4);
 root.right.left = new TreeNode(5);
 root.right.right = new TreeNode(6);
-console.log(`Tree Diameter: ${root}`);
-process.stdout.write(`${root}`)
+console.log(`Tree Diameter: ${treeDiameter.find_diameter(root)}`);
+root.left.left = null;
+root.right.left.left = new TreeNode(7);
+root.right.left.right = new TreeNode(8);
+root.right.right.left = new TreeNode(9);
+root.right.left.right.left = new TreeNode(10);
+root.right.right.left.left = new TreeNode(11);
+console.log(`Tree Diameter: ${treeDiameter.find_diameter(root)}`);
