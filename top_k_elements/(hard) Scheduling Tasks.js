@@ -55,6 +55,9 @@ const schedule_tasks = function (tasks, k) {
   return timeInterval;
 };
 
+// Time complexity: O(NlogN)
+// Space complexity: O(N)
+
 console.log(
   `Minimum intervals needed to execute all tasks: ${schedule_tasks(
     ["a", "a", "a", "b", "c", "c"],
