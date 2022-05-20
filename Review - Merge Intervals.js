@@ -63,8 +63,6 @@
 // }
 // console.log(`Merged intervals: ${result}`);
 
-
-
 // class Interval {
 //   constructor(start, end) {
 //     this.start = start;
@@ -125,3 +123,61 @@
 //   result[i].print_interval();
 // }
 // console.log();
+
+class Interval {
+  constructor(start, end) {
+    this.start = start;
+    this.end = end;
+  }
+
+  print_interval() {
+    process.stdout.write(`[${this.start}, ${this.end}]`);
+  }
+}
+
+const merge = function (intervals_a, intervals_b) {
+  let result = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < intervals_a.length && j < intervals_b.length) {
+    let a = intervals_a[i];
+    let b = intervals_b[j];
+
+    let a_overlaps_b = a.start >= b.start && a.start <= b.end;
+    let b_overlaps_a = b.start >= a.start && b.start <= a.end;
+
+    if (a_overlaps_b || b_overlaps_a) {
+      result.push(
+        new Interval(Math.max(a.start, b.start), Math.min(a.end, b.end))
+      );
+    }
+
+    if (a.end < b.end) {
+      i++;
+    } else {
+      j++;
+    }
+  }
+  return result;
+};
+
+process.stdout.write("Intervals Intersection: ");
+let result = merge(
+  [new Interval(1, 3), new Interval(5, 6), new Interval(7, 9)],
+  [new Interval(2, 3), new Interval(5, 7)]
+);
+for (let i = 0; i < result.length; i++) {
+  result[i].print_interval();
+}
+console.log();
+
+process.stdout.write("Intervals Intersection: ");
+result = merge(
+  [new Interval(1, 3), new Interval(5, 7), new Interval(9, 12)],
+  [new Interval(5, 10)]
+);
+for (let i = 0; i < result.length; i++) {
+  result[i].print_interval();
+}
+console.log();
