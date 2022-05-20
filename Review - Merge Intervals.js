@@ -124,60 +124,107 @@
 // }
 // console.log();
 
-class Interval {
-  constructor(start, end) {
-    this.start = start;
-    this.end = end;
-  }
+// class Interval {
+//   constructor(start, end) {
+//     this.start = start;
+//     this.end = end;
+//   }
 
-  print_interval() {
-    process.stdout.write(`[${this.start}, ${this.end}]`);
-  }
-}
+//   print_interval() {
+//     process.stdout.write(`[${this.start}, ${this.end}]`);
+//   }
+// }
 
-const merge = function (intervals_a, intervals_b) {
-  let result = [];
-  let i = 0;
-  let j = 0;
+// const merge = function (intervals_a, intervals_b) {
+//   let result = [];
+//   let i = 0;
+//   let j = 0;
 
-  while (i < intervals_a.length && j < intervals_b.length) {
-    let a = intervals_a[i];
-    let b = intervals_b[j];
+//   while (i < intervals_a.length && j < intervals_b.length) {
+//     let a = intervals_a[i];
+//     let b = intervals_b[j];
 
-    let a_overlaps_b = a.start >= b.start && a.start <= b.end;
-    let b_overlaps_a = b.start >= a.start && b.start <= a.end;
+//     let a_overlaps_b = a.start >= b.start && a.start <= b.end;
+//     let b_overlaps_a = b.start >= a.start && b.start <= a.end;
 
-    if (a_overlaps_b || b_overlaps_a) {
-      result.push(
-        new Interval(Math.max(a.start, b.start), Math.min(a.end, b.end))
-      );
-    }
+//     if (a_overlaps_b || b_overlaps_a) {
+//       result.push(
+//         new Interval(Math.max(a.start, b.start), Math.min(a.end, b.end))
+//       );
+//     }
 
-    if (a.end < b.end) {
-      i++;
-    } else {
-      j++;
-    }
-  }
-  return result;
-};
+//     if (a.end < b.end) {
+//       i++;
+//     } else {
+//       j++;
+//     }
+//   }
+//   return result;
+// };
 
-process.stdout.write("Intervals Intersection: ");
-let result = merge(
-  [new Interval(1, 3), new Interval(5, 6), new Interval(7, 9)],
-  [new Interval(2, 3), new Interval(5, 7)]
-);
-for (let i = 0; i < result.length; i++) {
-  result[i].print_interval();
-}
-console.log();
+// process.stdout.write("Intervals Intersection: ");
+// let result = merge(
+//   [new Interval(1, 3), new Interval(5, 6), new Interval(7, 9)],
+//   [new Interval(2, 3), new Interval(5, 7)]
+// );
+// for (let i = 0; i < result.length; i++) {
+//   result[i].print_interval();
+// }
+// console.log();
 
-process.stdout.write("Intervals Intersection: ");
-result = merge(
-  [new Interval(1, 3), new Interval(5, 7), new Interval(9, 12)],
-  [new Interval(5, 10)]
-);
-for (let i = 0; i < result.length; i++) {
-  result[i].print_interval();
-}
-console.log();
+// process.stdout.write("Intervals Intersection: ");
+// result = merge(
+//   [new Interval(1, 3), new Interval(5, 7), new Interval(9, 12)],
+//   [new Interval(5, 10)]
+// );
+// for (let i = 0; i < result.length; i++) {
+//   result[i].print_interval();
+// }
+// console.log();
+
+
+
+// class Interval {
+//     constructor(start, end) {
+//       this.start = start;
+//       this.end = end;
+//     }
+  
+//     print_interval() {
+//       process.stdout.write(`[${this.start}, ${this.end}]`);
+//     }
+//   }
+  
+//   const can_attend_all_appointments = function(intervals) {
+//     if(intervals.length < 2) return true;
+//     intervals.sort((a, b) => a.start - b.start);
+//     // console.log(intervals);
+//     for(let i = 1; i < intervals.length; i++) {
+//         let prev = intervals[i - 1];
+//         let current = intervals[i];
+//         if(prev.end > current.start) {
+//             return false;
+//         }
+//     }
+//     return true;
+//   };
+  
+  
+//   console.log(`Can attend all appointments: ${can_attend_all_appointments([
+//     new Interval(1, 4),
+//     new Interval(2, 5),
+//     new Interval(7, 9),
+//   ])}`);
+  
+//   console.log(`Can attend all appointments: ${can_attend_all_appointments([
+//     new Interval(6, 7),
+//     new Interval(2, 4),
+//     new Interval(8, 12),
+//   ])}`);
+  
+//   console.log(`Can attend all appointments: ${can_attend_all_appointments([
+//     new Interval(1, 2),
+//     new Interval(2, 3),
+//     new Interval(3, 6),
+//   ])}`);
+  
